@@ -1,0 +1,35 @@
+{
+  "name": "contact_agenda",
+  "version": "0.0.1",
+  "description": "An application to manage contacts and group them into agendas",
+  "main": "index.js",
+  "authors": [
+    "Albert Segarra Roca"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertsgrc/meanProject.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/albertsgrc/meanProject/issues"
+  },
+  "homepage": "https://github.com/albertsgrc/meanProject#readme",
+  "dependencies": {
+    "bcrypt": "^0.8.3",
+    "body-parser": "^1.13.2",
+    "compression": "^1.5.1",
+    "cors": "^2.7.1",
+    "express": "^4.13.1",
+    "express-jwt": "^3.0.1",
+    "express-winston": "^0.3.1",
+    "jsonwebtoken": "^5.0.2",
+    "lodash": "^3.10.0",
+    "mongoose": "^4.0.7",
+    "winston": "^1.0.1"
+  }
+}
