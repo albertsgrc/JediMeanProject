@@ -16,6 +16,10 @@ mongoose.connect(config.DB_URI, function(err) {
 
 var models = require('./server/models')();
 
+var usersRouter = require('./server/routes/users');
+var agendasRouter = require('./server/routes/agendas');
+var contactsRouter = require('./server/routes/contacts');
+
 var app = express();
 
 app.set('views', __dirname + '/client/views');
@@ -25,6 +29,10 @@ app.use(compression());
 app.use(bodyParser.json());
 app.use(cors());
 app.use(expressWinston.logger(config.WINSTON_OPTIONS));
+
+app.use('/user', usersRouter);
+app.use('/agenda', agendasRouter);
+app.use('/contact', contactsRouter);
 
 app.get('*', function(req, res) { res.render('index'); });
 
