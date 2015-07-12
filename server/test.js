@@ -119,8 +119,8 @@ rq('Should output empty list', get, ['/agenda']);
 
 rq('Should say required fields', post, ['/contact', {}]);
 
-rq('Create contact Nadà Hakim', post, ['/contact', { _id: "55a2cd8ce151311d183dc0b0", name: "Nadà", surname: "Hakim", company: "Noies guapes", telephone: "661143228" }]);
-rq('Should throw not unique error', post, ['/contact', { _id: "52a23d8ae151311d183dd0b0", name: "Nadà", surname: "Hakim", company: "Anus", telephone: "662123228" }]);
+rq('Create contact Maria Maria', post, ['/contact', { _id: "55a2cd8ce151311d183dc0b0", name: "Maria", surname: "Maria", company: "Noies guapes", telephone: "661143228" }]);
+rq('Should throw not unique error', post, ['/contact', { _id: "52a23d8ae151311d183dd0b0", name: "Maria", surname: "Maria", company: "Anus", telephone: "662123228" }]);
 
 rq('Create contact Marc Solano', post, ['/contact', { _id: "57b2cd8ce1512e1d183ac2b0", name: "Marc", surname: "Solano", company: "Anus", telephone: "661123222" }]);
 
@@ -133,8 +133,8 @@ rq('Create agenda Pretty', post, ['/agenda', { _id: "22323d8a3151311d183dd0a0", 
 rq("Should say contact doesn't exist", patch, ['/agenda/22323d8a3151311d183dd0a0/addContact/22323d8a3151311d183dd0a0']);
 rq("Should not do anything because agenda doesn't exist", patch, ['/agenda/21323d8a3151311d183dd0a0/addContact/55a2cd8ce151311d183dc0b0']);
 
-rq('Add contact Nadà to Pretty',  patch, ['/agenda/22323d8a3151311d183dd0a0/addContact/55a2cd8ce151311d183dc0b0']);
-rq('Add contact Marta to Pretty',  patch, ['/agenda/22323d8a3151311d183dd0a0/addContact', {  _id: "62a23d8a7152311d183da0b0", name: "Marta", surname: "Barroso", company: "Noies guapes", telephone: "662133228" }]);
+rq('Add contact Maria to Pretty',  patch, ['/agenda/22323d8a3151311d183dd0a0/addContact/55a2cd8ce151311d183dc0b0']);
+rq('Add contact Marta to Pretty',  patch, ['/agenda/22323d8a3151311d183dd0a0/addContact', {  _id: "62a23d8a7152311d183da0b0", name: "Marta", surname: "Didi", company: "Noies guapes", telephone: "662133228" }]);
 
 rq('Should show one agenda with two contacts', get, ['/agenda']);
 
