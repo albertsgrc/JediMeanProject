@@ -1,0 +1,72 @@
+
+<header>
+  <md-toolbar class="md-tall md-padding">
+    <h1 class="md-display-2 toolbarTitle">Entrada</h1>
+  </md-toolbar>
+</header>
+<md-content layout="column" layout-align="start center" flex="flex" class="md-padding">
+  <md-card class="md-padding md-hue-3 loginCard">
+    <md-card-content layout="row" flex="flex">
+      <md-tabs md-selected="tabIndex" md-border-bottom="md-border-bottom" md-dynamic-height="md-dynamic-height" md-stretch-tabs="always" flex="flex">
+        <md-tab label="Inicia sessió">
+          <md-content class="md-padding md-hue-3">
+            <form name="form.loginForm" flex="flex">
+              <md-input-container>
+                <label>Nom d'usuari</label>
+                <input required="required" name="username" ng-model="login.username"/>
+                <div ng-messages="form.loginForm.username.$error" ng-show="form.loginForm.username.$touched || loginClicked">
+                  <div ng-message="required">Emplena el camp</div>
+                </div>
+              </md-input-container>
+              <md-input-container>
+                <label>Contrasenya</label>
+                <input required="required" type="password" name="password" ng-model="login.password"/>
+                <div ng-messages="form.loginForm.password.$error" ng-show="form.loginForm.password.$touched || loginClicked">
+                  <div ng-message="required">Emplena el camp</div>
+                </div>
+              </md-input-container>
+              <div layout="row" layout-align="center center" class="topMargin">
+                <md-button ng-click="login()" class="md-raised md-primary">Entra</md-button>
+              </div>
+            </form>
+          </md-content>
+        </md-tab>
+        <md-tab label="Registra't">
+          <md-content class="md-padding md-hue-3">
+            <form name="form.registerForm" flex="flex">
+              <md-input-container>
+                <label>Nom d'usuari</label>
+                <input ng-minlength="3" md-maxlength="20" required="required" name="username" ng-model="register.username"/>
+                <div ng-messages="form.registerForm.username.$error" ng-show="form.registerForm.username.$touched || registerClicked">
+                  <div ng-message="required">Emplena el camp</div>
+                  <div ng-message="minlength">Mínim 3 caràcters</div>
+                  <div ng-message="md-maxlength">Màxim 20 caràcters</div>
+                </div>
+              </md-input-container>
+              <md-input-container>
+                <label>Contrasenya</label>
+                <input required="required" ng-minlength="2" md-maxlength="100" type="password" name="password" ng-model="register.password"/>
+                <div ng-messages="form.registerForm.password.$error" ng-show="form.registerForm.password.$touched || registerClicked">
+                  <div ng-message="required">Emplena el camp</div>
+                  <div ng-message="minlength">Mínim 2 caràcters</div>
+                  <div ng-message="md-maxlength">Màxim 100 caràcters</div>
+                </div>
+              </md-input-container>
+              <md-input-container>
+                <label>Repeteix la contrasenya</label>
+                <input required="required" equal-to="register.password" type="password" name="passwordConfirm" ng-model="register.passwordConfirm"/>
+                <div ng-messages="form.registerForm.passwordConfirm.$error" ng-show="form.registerForm.passwordConfirm.$touched || registerClicked">
+                  <div ng-message="required">Emplena el camp</div>
+                  <div ng-message="equalTo">Les contrasenyes no coincideixen</div>
+                </div>
+              </md-input-container>
+              <div layout="row" layout-align="center center" class="topMargin">
+                <md-button ng-click="register()" class="md-raised md-primary">Registre</md-button>
+              </div>
+            </form>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </md-card-content>
+  </md-card>
+</md-content>

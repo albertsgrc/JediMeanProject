@@ -1,0 +1,26 @@
+nav(ng-controller="NavigationController")
+
+   md-toolbar.md-whiteframe-z2(md-scroll-shrink)
+      .md-toolbar-tools
+         div(flex)
+            h1 {{title()}}
+         .flexVertically#navButtonContainer(layout="row")
+
+            .flexVertically.md-whiteframe-z2.someSpacing(layout="row", layout-align="center center", ng-repeat="item in navItems", ng-class="{active:isActive(item.url)}")
+               md-button.md-icon-button(ng-click="execute(item.action)", aria-label="{{item.title}}")
+                  md-tooltip {{item.title}}
+                  i.md-primary.material-icons.md-hue-2 {{item.icon}}
+         div(flex, layout="row")
+            div(flex)
+            md-menu(md-offset="50 75")
+               md-button.md-icon-button(aria-label="Més", ng-click="$mdOpenMenu()")
+                  md-tooltip Més
+                  i.material-icons.md-24 more_vert
+
+               md-menu-content.whiteBackground(width="3")
+                  md-menu-item(ng-repeat="sideItem in sideItems")
+                     md-button(ng-click="execute(sideItem.action)", layout="horizontal", layout-align="start center")
+                        i.material-icons {{sideItem.icon}}
+                        |&nbsp;{{sideItem.title}}
+
+md-content.md-padding#pageContent(layout="column", flex="", ui-view="")

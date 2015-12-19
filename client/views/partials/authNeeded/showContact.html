@@ -1,0 +1,29 @@
+
+<md-dialog class="largeDialog">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>{{showContact.name}}</h2><span flex="flex"></span>
+      <md-button ng-click="cancel()" class="md-icon-button">
+        <md-icon class="material-icons">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content class="contactDialog">
+    <div layout="row">
+      <p id="contactTag">Nom:&nbsp;&nbsp;&nbsp;</p>
+      <p>{{showContact.name + " " + showContact.surname}}</p>
+    </div>
+    <div layout="row" ng-if="showContact.telephone != undefined">
+      <p id="contactTag">Telèfon:&nbsp;&nbsp;&nbsp;</p>
+      <p>{{showContact.telephone}}</p>
+    </div>
+    <div layout="row" ng-if="showContact.email != undefined">
+      <p id="contactTag">Correu:&nbsp;&nbsp;&nbsp;</p>
+      <p>{{showContact.email}}</p>
+    </div>
+    <div layout="row" ng-if="showContact.company != undefined">
+      <p id="contactTag">Companyia:&nbsp;&nbsp;&nbsp;</p>
+      <p>{{showContact.company}}</p>
+    </div>
+  </md-dialog-content>
+</md-dialog>

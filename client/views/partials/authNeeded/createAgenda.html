@@ -1,0 +1,28 @@
+
+<md-dialog>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Crea un nova agenda</h2><span flex="flex"></span>
+      <md-button ng-click="cancel()" class="md-icon-button">
+        <md-icon class="material-icons">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <form name="form.createAgendaForm">
+      <div layout="row" layout-align="center center"><i class="material-icons">functions</i>
+        <md-input-container>
+          <label>Nom</label>
+          <input ng-model="newAgenda.name" type="text" name="name"/>
+          <div ng-messages="form.createAgendaForm.name.$error" ng-show="form.createAgendaForm.name.$dirty">
+            <div ng-message="required">Emplena el camp</div>
+            <div ng-message="md-maxlength">Màxim 30 caràcters</div>
+          </div>
+        </md-input-container>
+      </div>
+    </form>
+    <div layout="row" layout-align="center center" class="md-actions"><span flex="flex"></span>
+      <md-button ng-click="answer(newAgenda)" class="md-primary">Crea</md-button>
+    </div>
+  </md-dialog-content>
+</md-dialog>

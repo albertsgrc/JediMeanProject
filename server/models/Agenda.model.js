@@ -3,11 +3,13 @@ var Schema = mongoose.Schema;
 
 module.exports = function() {
 
-    agendaSchema = new Schema({
+    var agendaSchema = new Schema({
         name: {
             type: String,
             trim: true,
-            required: true
+            required: true,
+            minlength: 1,
+            maxlength: 30
         },
         contacts: [ { type: Schema.Types.ObjectId, ref: 'Contact' } ],
         user: {

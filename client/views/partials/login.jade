@@ -1,0 +1,49 @@
+header
+    md-toolbar.md-tall.md-padding
+        h1.md-display-2.toolbarTitle Entrada
+
+md-content.md-padding(layout="column", layout-align="start center", flex)
+    md-card.md-padding.md-hue-3.loginCard
+        md-card-content(layout="row", flex)
+            md-tabs(md-selected="tabIndex", md-border-bottom, md-dynamic-height, md-stretch-tabs="always", flex)
+                md-tab(label="Inicia sessió")
+                    md-content.md-padding.md-hue-3
+                        form(name="form.loginForm", flex)
+                            md-input-container
+                                label Nom d'usuari
+                                input(required, name="username", ng-model="login.username")
+                                div(ng-messages="form.loginForm.username.$error", ng-show="form.loginForm.username.$touched || loginClicked")
+                                    div(ng-message="required") Emplena el camp
+                            md-input-container
+                                label Contrasenya
+                                input(required, type="password", name="password", ng-model="login.password")
+                                div(ng-messages="form.loginForm.password.$error", ng-show="form.loginForm.password.$touched || loginClicked")
+                                    div(ng-message="required") Emplena el camp
+                            div.topMargin(layout="row", layout-align="center center")
+                                md-button.md-raised.md-primary(ng-click="login()") Entra
+                md-tab(label="Registra't")
+                    md-content.md-padding.md-hue-3
+                        form(name="form.registerForm", flex)
+                            md-input-container
+                                label Nom d'usuari
+                                input(ng-minlength="3", md-maxlength="20", required, name="username", ng-model="register.username")
+                                div(ng-messages="form.registerForm.username.$error", ng-show="form.registerForm.username.$touched || registerClicked")
+                                    div(ng-message="required") Emplena el camp
+                                    div(ng-message="minlength") Mínim 3 caràcters
+                                    div(ng-message="md-maxlength") Màxim 20 caràcters
+                            md-input-container
+                                label Contrasenya
+                                input(required, ng-minlength="2", md-maxlength="100", type="password", name="password", ng-model="register.password")
+                                div(ng-messages="form.registerForm.password.$error", ng-show="form.registerForm.password.$touched || registerClicked")
+                                    div(ng-message="required") Emplena el camp
+                                    div(ng-message="minlength") Mínim 2 caràcters
+                                    div(ng-message="md-maxlength") Màxim 100 caràcters
+                            md-input-container
+                                label Repeteix la contrasenya
+                                input(required, equal-to="register.password", type="password", name="passwordConfirm", ng-model="register.passwordConfirm")
+                                div(ng-messages="form.registerForm.passwordConfirm.$error", ng-show="form.registerForm.passwordConfirm.$touched || registerClicked")
+                                    div(ng-message="required") Emplena el camp
+                                    div(ng-message="equalTo") Les contrasenyes no coincideixen
+
+                            div.topMargin(layout="row", layout-align="center center")
+                                md-button.md-raised.md-primary(ng-click="register()") Registre

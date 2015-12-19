@@ -1,0 +1,31 @@
+
+<nav ng-controller="NavigationController">
+  <md-toolbar md-scroll-shrink="md-scroll-shrink" class="md-whiteframe-z2">
+    <div class="md-toolbar-tools">
+      <div flex="flex">
+        <h1>{{title()}}</h1>
+      </div>
+      <div id="navButtonContainer" layout="row" class="flexVertically">
+        <div layout="row" layout-align="center center" ng-repeat="item in navItems" ng-class="{active:isActive(item.url)}" class="flexVertically md-whiteframe-z2 someSpacing">
+          <md-button ng-click="execute(item.action)" aria-label="{{item.title}}" class="md-icon-button">
+            <md-tooltip>{{item.title}}</md-tooltip><i class="md-primary material-icons md-hue-2">{{item.icon}}</i>
+          </md-button>
+        </div>
+      </div>
+      <div flex="flex" layout="row">
+        <div flex="flex"></div>
+        <md-menu md-offset="50 75">
+          <md-button aria-label="Més" ng-click="$mdOpenMenu()" class="md-icon-button">
+            <md-tooltip>Més</md-tooltip><i class="material-icons md-24">more_vert</i>
+          </md-button>
+          <md-menu-content width="3" class="whiteBackground">
+            <md-menu-item ng-repeat="sideItem in sideItems">
+              <md-button ng-click="execute(sideItem.action)" layout="horizontal" layout-align="start center"><i class="material-icons">{{sideItem.icon}}</i>&nbsp;{{sideItem.title}}</md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+      </div>
+    </div>
+  </md-toolbar>
+</nav>
+<md-content id="pageContent" layout="column" flex="" ui-view="" class="md-padding"></md-content>

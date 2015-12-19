@@ -31,6 +31,7 @@ router.post('/authenticate', function(req, res) {
                     else {
                         if (equalPasswords) {
                             res.json({
+                                user: result,
                                 token: jwt.sign(result, config.JWT_SECRET, { expiresInMinutes: 1440 })
                             });
                         }

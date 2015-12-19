@@ -1,0 +1,51 @@
+md-dialog.largeDialog
+   md-toolbar
+      div.md-toolbar-tools
+         h2 Crea un nou contacte
+         span(flex)
+         md-button.md-icon-button(ng-click="cancel()")
+            md-icon.material-icons close
+   md-dialog-content
+      form(name="form.createContactForm")
+         div(layout="row")
+            i.material-icons person
+            md-input-container
+               label Nom
+               input(md-maxlength="30", ng-model='newContact.name', ca-regex="'^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,]{1,30}$'", type="text", ng-required="true", name="name")
+               div(ng-messages="form.createContactForm.name.$error", ng-show="form.createContactForm.name.$touched || createClicked")
+                  div(ng-message="required") Emplena el camp
+                  div(ng-message="md-maxlength") Màxim 30 caràcters
+                  div(ng-message="caRegex") El nom no és vàlid
+            md-input-container(md-no-float='')
+               label Cognoms
+               input(md-maxlength="60", ca-regex="'^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,]{1,60}$'", ng-model='newContact.surname', type='text', ng-required="true", name="surname")
+               div(ng-messages="form.createContactForm.surname.$error", ng-show="form.createContactForm.surname.$touched || createClicked")
+                  div(ng-message="required") Emplena el camp
+                  div(ng-message="md-maxlength") Màxim 60 caràcters
+                  div(ng-message="caRegex") El cognom no és vàlid
+         div(layout="row", layout-align="center center")
+            i.material-icons phone
+            md-input-container(md-no-float='')
+               label Telèfon
+               input(md-maxlength="9", ng-pattern="'([0-9]{9})'" ng-model='newContact.telephone', type='text', name="tel")
+               div(ng-messages="form.createContactForm.tel.$error", ng-show="form.createContactForm.tel.$dirty")
+                  div(ng-message="pattern") Ha de contenir 9 nombres
+         div(layout="row", layout-align="center center")
+            i.material-icons email
+            md-input-container
+               label Correu
+               input(ng-model='newContact.email', type='email', name="email")
+               div(ng-messages="form.createContactForm.email.$error", ng-show="form.createContactForm.email.$dirty")
+                  div(ng-message="email") El correu és invàlid
+         div(layout="row", layout-align="center center")
+            i.material-icons work
+            md-input-container(md-no-float='')
+               label Companyia
+               input(md-maxlength="100", ng-model='newContact.company', type='text', name="company")
+               div(ng-messages="form.createContactForm.company.$error", ng-show="form.createContactForm.company.$dirty")
+                  div(ng-message="md-maxlength") Màxim 100 caràcters
+
+
+      div.md-actions(layout="row", layout-align="center center")
+         span(flex)
+         md-button.md-primary(ng-click="answer(newContact)") Crea

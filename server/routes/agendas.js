@@ -26,23 +26,32 @@ router.patch('/:agenda_id/addContact/:contact_id',
 );
 
 router.patch('/:agenda_id/addContact',
-    function(req, res, next) {
-        req.body.user = req.user;
-        new Contact(req.body).save(function(err, result) {
-            if (err) res.status(500).json(err);
-            else {
-                req.contact_id = result._id;
-                next();
-            }
-        });
-    },
     function(req, res) {
-        Agenda.findByIdAndUpdate(req.params.agenda_id, { $push: { "contacts": req.contact_id } }, { new: true, safe: true }, function(err, result) {
+        Agenda.findByIdAndUpdate(req.params.agenda_id, { $push: { "contacts": req.body.contact_id } }, { new: true, safe: true }, function(err, result) {
             if (err) res.status(500).json(err);
             else res.status(200).json(result);
         });
     }
 );
+
+router.patch('/:agenda_id/removeContact',
+    function(req, res) {
+        Agenda.findByIdAndUpdate(req.params.agenda_id, { $pull: { "contacts": req.body.contact_id } }, { new: true, safe: true }, function(err, result) {
+            if (err) res.status(500).json(err);
+            else res.status(200).json(result);
+        });
+    }
+);
+
+router.get('/byname/:name',
+    function(req, res) {
+        Agenda.findOne({ user: req.user._id, name: req.params.name }, function(err, result){
+            if(err) res.status(500).json(err);
+            else {
+                res.status(200).json(result);
+            }
+        }).populate('user contacts');
+    });
 
 crud.complete(router, Agenda, 'user contacts');
 

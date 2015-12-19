@@ -1,0 +1,20 @@
+md-dialog.largeDialog
+   md-toolbar
+      div.md-toolbar-tools
+         h2 {{showContact.name}}
+         span(flex)
+         md-button.md-icon-button(ng-click="cancel()")
+            md-icon.material-icons close
+   md-dialog-content.contactDialog
+      div(layout="row")
+         p#contactTag Nom:&nbsp;&nbsp;&nbsp;
+         p {{showContact.name + " " + showContact.surname}}
+      div(layout="row", ng-if="showContact.telephone != undefined")
+         p#contactTag Telèfon:&nbsp;&nbsp;&nbsp;
+         p {{showContact.telephone}}
+      div(layout="row", ng-if="showContact.email != undefined")
+         p#contactTag Correu:&nbsp;&nbsp;&nbsp;
+         p {{showContact.email}}
+      div(layout="row", ng-if="showContact.company != undefined")
+         p#contactTag Companyia:&nbsp;&nbsp;&nbsp;
+         p {{showContact.company}}

@@ -1,0 +1,22 @@
+md-dialog
+   md-toolbar
+      div.md-toolbar-tools
+         h2 Edita {{oldAgenda.name}}
+         span(flex)
+         md-button.md-icon-button(ng-click="cancel()")
+            md-icon.material-icons close
+   md-dialog-content
+      form(name="form.editAgendaForm")
+         div(layout="row", layout-align="center center")
+            i.material-icons functions
+            md-input-container
+               label Nom
+               input(ng-model='editAgenda.name', type='text', name="name")
+               div(ng-messages="form.editAgendaForm.name.$error", ng-show="form.editAgendaForm.name.$dirty")
+                  div(ng-message="required") Emplena el camp
+                  div(ng-message="md-maxlength") Màxim 30 caràcters
+
+
+      div.md-actions(layout="row", layout-align="center center")
+         span(flex)
+         md-button.md-primary(ng-click="answer(editAgenda)") Guarda

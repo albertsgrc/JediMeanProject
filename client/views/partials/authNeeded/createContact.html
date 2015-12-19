@@ -1,0 +1,65 @@
+
+<md-dialog class="largeDialog">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Crea un nou contacte</h2><span flex="flex"></span>
+      <md-button ng-click="cancel()" class="md-icon-button">
+        <md-icon class="material-icons">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <form name="form.createContactForm">
+      <div layout="row"><i class="material-icons">person</i>
+        <md-input-container>
+          <label>Nom</label>
+          <input md-maxlength="30" ng-model="newContact.name" ca-regex="'^[^±!@£$%^&amp;*_+§¡€#¢§¶•ªº«\/&lt;&gt;?:;|=.,]{1,30}$'" type="text" ng-required="true" name="name"/>
+          <div ng-messages="form.createContactForm.name.$error" ng-show="form.createContactForm.name.$touched || createClicked">
+            <div ng-message="required">Emplena el camp</div>
+            <div ng-message="md-maxlength">Màxim 30 caràcters</div>
+            <div ng-message="caRegex">El nom no és vàlid</div>
+          </div>
+        </md-input-container>
+        <md-input-container md-no-float="">
+          <label>Cognoms</label>
+          <input md-maxlength="60" ca-regex="'^[^±!@£$%^&amp;*_+§¡€#¢§¶•ªº«\/&lt;&gt;?:;|=.,]{1,60}$'" ng-model="newContact.surname" type="text" ng-required="true" name="surname"/>
+          <div ng-messages="form.createContactForm.surname.$error" ng-show="form.createContactForm.surname.$touched || createClicked">
+            <div ng-message="required">Emplena el camp</div>
+            <div ng-message="md-maxlength">Màxim 60 caràcters</div>
+            <div ng-message="caRegex">El cognom no és vàlid</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div layout="row" layout-align="center center"><i class="material-icons">phone</i>
+        <md-input-container md-no-float="">
+          <label>Telèfon</label>
+          <input md-maxlength="9" ng-pattern="'([0-9]{9})'" ng-model="newContact.telephone" type="text" name="tel"/>
+          <div ng-messages="form.createContactForm.tel.$error" ng-show="form.createContactForm.tel.$dirty">
+            <div ng-message="pattern">Ha de contenir 9 nombres</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div layout="row" layout-align="center center"><i class="material-icons">email</i>
+        <md-input-container>
+          <label>Correu</label>
+          <input ng-model="newContact.email" type="email" name="email"/>
+          <div ng-messages="form.createContactForm.email.$error" ng-show="form.createContactForm.email.$dirty">
+            <div ng-message="email">El correu és invàlid</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div layout="row" layout-align="center center"><i class="material-icons">work</i>
+        <md-input-container md-no-float="">
+          <label>Companyia</label>
+          <input md-maxlength="100" ng-model="newContact.company" type="text" name="company"/>
+          <div ng-messages="form.createContactForm.company.$error" ng-show="form.createContactForm.company.$dirty">
+            <div ng-message="md-maxlength">Màxim 100 caràcters</div>
+          </div>
+        </md-input-container>
+      </div>
+    </form>
+    <div layout="row" layout-align="center center" class="md-actions"><span flex="flex"></span>
+      <md-button ng-click="answer(newContact)" class="md-primary">Crea</md-button>
+    </div>
+  </md-dialog-content>
+</md-dialog>

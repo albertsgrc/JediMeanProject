@@ -1,0 +1,23 @@
+md-button.favButtonPlus.md-fab.md-accent(ng-click="showCreateDialog()")
+    i.material-icons.md-24 add
+
+div.md-whiteframe-z3#searchWrapper(layout="row")
+    i.material-icons search
+    input#searchInput(placeholder="Busca", flex, ng-model="searchText")
+    md-button.md-icon-button.floatRight(ng-if="searchText != ''", ng-click="deleteText()")
+        i.material-icons close
+
+md-list(flex, style="height: 45px;", ng-if="contacts.length != 0")
+    div(ng-repeat="contact in contacts | filter:filterContacts | orderBy:contactSort")
+        div.contactItem(layout="row", flex)
+            md-list-item(ng-click="showContact(contact._id)", flex)
+                p {{contact.name + " " + contact.surname}}
+            md-button.md-icon-button
+                i(ng-click="showEditContactDialog(contact._id)").material-icons.edit.md-secondary edit
+            md-button.md-icon-button
+                i(ng-click="deleteContact(contact._id)").material-icons.delete.md-secondary delete
+        md-divider(ng-if="!$last")
+
+
+div(layout="row", layout-align="center center", ng-if="contacts.length == 0", flex)
+    span.md-display-2 No tens contactes! Crea'n pitjant al botó '+'

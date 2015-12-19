@@ -8,7 +8,8 @@ module.exports = function() {
             type: String,
             trim: true,
             required: true,
-            match: /^[a-z0-9_-]{3,16}$/
+            minlength: 3,
+            maxlength: 20
         },
         password: {
             type: String,

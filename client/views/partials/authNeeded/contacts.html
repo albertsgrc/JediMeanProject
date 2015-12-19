@@ -1,0 +1,19 @@
+
+<md-button ng-click="showCreateDialog()" class="favButtonPlus md-fab md-accent"><i class="material-icons md-24">add</i></md-button>
+<div id="searchWrapper" layout="row" class="md-whiteframe-z3"><i class="material-icons">search</i>
+  <input id="searchInput" placeholder="Busca" flex="flex" ng-model="searchText"/>
+  <md-button ng-if="searchText != ''" ng-click="deleteText()" class="md-icon-button floatRight"><i class="material-icons">close</i></md-button>
+</div>
+<md-list flex="flex" style="height: 45px;" ng-if="contacts.length != 0">
+  <div ng-repeat="contact in contacts | filter:filterContacts | orderBy:contactSort">
+    <div layout="row" flex="flex" class="contactItem">
+      <md-list-item ng-click="showContact(contact._id)" flex="flex">
+        <p>{{contact.name + " " + contact.surname}}</p>
+      </md-list-item>
+      <md-button class="md-icon-button"><i ng-click="showEditContactDialog(contact._id)" class="material-icons edit md-secondary">edit</i></md-button>
+      <md-button class="md-icon-button"><i ng-click="deleteContact(contact._id)" class="material-icons delete md-secondary">delete</i></md-button>
+    </div>
+    <md-divider ng-if="!$last"></md-divider>
+  </div>
+</md-list>
+<div layout="row" layout-align="center center" ng-if="contacts.length == 0" flex="flex"><span class="md-display-2">No tens contactes! Crea'n pitjant al botó '+'</span></div>

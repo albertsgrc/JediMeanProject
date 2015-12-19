@@ -1,0 +1,19 @@
+md-button.favButtonPlus.md-fab.md-accent(ng-click="showCreateDialog()")
+    i.material-icons.md-24 add
+div.md-whiteframe-z3#searchWrapper(layout="row")
+    i.material-icons search
+    input#searchInput(placeholder="Busca", flex, ng-model="searchText")
+    md-button.md-icon-button.floatRight(ng-if="searchText != ''", ng-click="deleteText()")
+        i.material-icons close
+md-list(flex, style="height: 45px;", ng-if="agendas.length != 0")
+    div(ng-repeat="agenda in agendas | filter:filterAgendas | orderBy:agendaSort")
+        div.contactItem(layout="row", flex)
+            md-list-item(ng-click="showAgenda(agenda._id)", flex)
+                p {{agenda.name}}
+            md-button.md-icon-button
+                i(ng-click="showEditAgendaDialog(agenda._id)").material-icons.edit.md-secondary edit
+            md-button.md-icon-button
+                i(ng-click="deleteAgenda(agenda._id)").material-icons.delete.md-secondary delete
+        md-divider(ng-if="!$last")
+div(layout="row", layout-align="center center", ng-if="agendas.length == 0", flex)
+    span.md-display-2 No tens agendes! Crea'n pitjant al botó '+'
